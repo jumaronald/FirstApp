@@ -1,0 +1,47 @@
+MDScreen:
+    name:"applications"
+    FloatLayout:
+        Image:
+            source:"images/image26.jpg"
+            pos_hint:{"center_x":.5,"center_y":.5}
+            size_hint:(1, 1)
+            allow_stretch:True
+            keep_ratio:False
+        FloatLayout:
+            MDIconButton:
+                icon: "arrow-left"
+                icon_size:"30dp"
+                pos_hint: {"center_x": .075, "center_y": .96}
+                on_release:
+                    app.get_power_settings()
+                    app.schedule_dashboard()
+                    app.root.transition.direction  = "right"
+                    app.root.current = "dashboard"
+                    app.unschedule_tracking()
+        FloatLayout:
+            MDLabel:
+                text:'BULK METER APPLICATION'
+                pos_hint: {'center_x':.708, 'center_y':.93}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"16sp"
+        FloatLayout:
+            MDRaisedButton:
+                text: "   Apply For Meters    "
+                md_bg_color: "green"
+                pos_hint:{'center_x': .5, 'center_y': .66}
+                elevation:2
+                on_release:
+                    app.application_approval()
+        FloatLayout:
+            MDRaisedButton:
+                text: "   View Your Meters    "
+                md_bg_color: "green"
+                pos_hint:{'center_x': .5, 'center_y': .4}
+                elevation:2
+                on_release:
+                    app.sharing_button = 4
+                    app.root.transition.direction  = "left"
+                    app.root.current = "sharing"
+                    app.unlimited_button()
+                    # app.login()

@@ -1,0 +1,424 @@
+
+MDScreen:
+    name:"dashboard"
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Your Meter DashBoard"
+            elevation: 2
+            pos_hint: {"top": 1}
+            md_bg_color: "#e7e4c0"
+            specific_text_color: "#4a4939"
+            left_action_items:
+                [['menu', lambda x: nav_drawer.set_state("open")]]
+                # app.unschedule_dashboard()
+
+        FloatLayout:
+            Image:
+                source:"images/image4.png"
+                pos_hint:{"center_x":.5,"center_y":.5}
+                size_hint_x:1
+                size_hint_x:1
+                allow_stretch:True
+                keep_ratio:False
+            FloatLayout:
+                MDLabel:
+                    text:'Available Units:'
+                    pos_hint: {'center_x':.52, 'center_y':.941}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    # size_hint_y:None
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .941}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+            FloatLayout:
+                MDLabel:
+                    id:tokens_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.941}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.89, self.width * 1, self.height * 0.89
+
+            FloatLayout:
+                MDLabel:
+                    text:'Voltage:'
+                    pos_hint:{'center_x':.52, 'center_y':.842}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .842}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+            FloatLayout:
+                MDLabel:
+                    id:voltage_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.842}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.793, self.width * 1, self.height * 0.793
+
+            FloatLayout:
+                MDLabel:
+                    text:'Current:'
+                    pos_hint:{'center_x':.52, 'center_y':.743}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .743}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+            FloatLayout:
+                MDLabel:
+                    id:current_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.743}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.694, self.width * 1, self.height * 0.694
+
+            FloatLayout:
+                MDLabel:
+                    text:'Power'
+                    pos_hint:{'center_x':.52, 'center_y':.644}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .644}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+            FloatLayout:
+                MDLabel:
+                    id:power_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.644}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.595, self.width * 1, self.height * 0.595
+
+            FloatLayout:
+                MDLabel:
+                    text:'Energy Reading'
+                    pos_hint:{'center_x':.52, 'center_y':.545}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .545}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+
+            FloatLayout:
+                MDLabel:
+                    id:energy_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.542}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.496, self.width * 1, self.height * 0.496
+
+            FloatLayout:
+                MDLabel:
+                    text:'Units Sending'
+                    pos_hint:{'center_x':.52, 'center_y':.446}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .446}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+
+            FloatLayout:
+                MDLabel:
+                    id:sent_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.446}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.397, self.width * 1, self.height * 0.397
+
+            FloatLayout:
+                MDLabel:
+                    text:'Units Receiving'
+                    pos_hint:{'center_x':.52, 'center_y':.347}
+                    theme_text_color:'Custom'
+                    text_color:(250/255,235/255,215/255, 255/255)
+                    font_size:"20sp"
+
+            FloatLayout:
+                MDCard:
+                    radius: 1, 1, 1, 1
+                    focus_behavior: True
+                    size_hint: .492, .061
+                    pos_hint: {"center_x": .735, "center_y": .347}
+                    md_bg_color: "#ADFF2F"
+                    unfocus_color: "#ADFF2F"
+                    focus_color: "#3D9140"
+                    elevation: 4
+                    shadow_softness: 8
+                    shadow_offset: (-2, 2)
+
+            FloatLayout:
+                MDLabel:
+                    id:received_label
+                    text:""
+                    pos_hint: {'center_x':1.10, 'center_y':.347}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_size:"20sp"
+
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.width * 0.001, self.height * 0.298, self.width * 1, self.height * 0.298
+
+    MDNavigationLayout:
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            size_hint_x:.82
+            radius: (0, 16, 16, 0)
+            BoxLayout:
+                orientation:'vertical'
+                MDNavigationDrawerLabel:
+                    id: nav_label
+                    text: ""
+                    padding: "5dp", 0, 0, "2dp"
+                MDNavigationDrawerDivider:
+                    padding: "5dp", 0, 0, "2dp"
+                    size_hint_x:None
+                    width:230
+                ScrollView:
+                    MDList:
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=13]Login/Signup[/size]"
+                            secondary_text:"[size=11]Load Login Page[/size]"
+                            height: "48dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'login-variant'
+                                on_release:
+                                    app.unschedule_dashboard()
+                                    app.clear_login_fields()
+                                    app.root.transition.direction  = "right"
+                                    app.root.current = "login"
+                                    # app.schedule_tracking()
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=13]Buy Electricity Token[/size]"
+                            secondary_text:"[size=11]Done Through Mpesa[/size]"
+                            height: "48dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'cash-multiple'
+                                on_release:
+                                    app.unschedule_dashboard()
+                                    app.root.transition.direction  = "left"
+                                    app.root.current = "token"
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=12]Tither Electricity Token[/size]"
+                            secondary_text:"[size=10]Other users will share your units[/size]"
+                            height: "54dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'access-point-minus'
+                                on_release:
+                                    app.get_power_state()
+                                    app.unschedule_dashboard()
+                                    app.root.transition.direction  = "left"
+                                    app.root.current ="tither_token"
+                                    app.schedule_tracking()
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=12]Request Token Sharing[/size]"
+                            secondary_text:"[size=10]Use Token from Other Users[/size]"
+                            height: "54dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'access-point-plus'
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=12]Meter Migration[/size]"
+                            secondary_text:"[size=9]You will Acquire New Meter Number[/size]"
+                            height: "54dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'account-arrow-right'
+                                on_release:
+                                    app.unschedule_dashboard()
+                                    app.root.transition.direction  = "left"
+                                    app.root.current ="meter_number"
+                                    schedule_tracking()
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=12]Consumption Analysis[/size]"
+                            secondary_text:"[size=9]View Graphical Energy Presentation[/size]"
+                            height: "54dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'chart-bell-curve'
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=12]Bulk Meter Application[/size]"
+                            secondary_text:"[size=9]View and Apply For Bulk Meters[/size]"
+                            height: "54dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'box-shadow'
+                                on_release:
+                                    app.unschedule_dashboard()
+                                    app.root.transition.direction  = "left"
+                                    app.root.current = "applications"
+                                    app.schedule_tracking()
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=12]Power Management[/size]"
+                            secondary_text:"[size=10]View Additional Options[/size]"
+                            height: "54dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'cog'
+                                on_release:
+                                    app.unschedule_dashboard()
+                                    app.get_power_state()
+                                    app.root.transition.direction  = "left"
+                                    app.root.current ="power"
+                                    app.schedule_tracking()
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=13]Exit REMM App[/size]"
+                            secondary_text:"[size=11]Close App[/size]"
+                            height: "48dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'progress-close'
+                                on_release:
+                                    app.exit_function()
+                        TwoLineIconListItem:
+                            padding: "2dp", 0, 0, "4dp"
+                            text:"[size=13]Get Meter Numbers[/size]"
+                            secondary_text:"[size=11]Own up to Many Meters[/size]"
+                            height: "48dp"
+                            IconLeftWidgetWithoutTouch:
+                                theme_text_color: "Custom"
+                                text_color: rgba(0,127,255,255)
+                                icon:'account-card-outline'
+                                on_release:
+                                    app.unschedule_dashboard()
+                                    app.root.transition.direction  = "left"
+                                    app.root.current ="meter_owner"
+                                    app.schedule_tracking()
+
+
+            
+

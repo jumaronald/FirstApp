@@ -1,0 +1,32 @@
+MDScreen:
+    name: "sharing"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            id: toolbar
+            title: "View Sharing Info"
+            left_action_items: [["arrow-left", lambda x: app.sharing_callback(x)]]
+            right_action_items: [["magnify"], ["dots-vertical"]]
+            md_bg_color: 0, 0, 0, 1
+        MDBoxLayout:
+            padding: "2dp", "2dp", 2, "2dp"
+            size_hint_y: None
+            # adaptive_size: True
+            height: self.minimum_height
+            MDLabel:
+                id: Sharing_mode
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1]
+                text: "No sharing info to view"
+                # adaptive_size: True
+        ScrollView:
+            MDSelectionList:
+                id: list_one
+                # spacing: "12dp"
+                overlay_color: app.overlay_color[:-1] + [.2]
+                icon_bg_color: app.overlay_color
+                on_selected: app.on_selected(*args)
+                on_unselected: app.on_unselected(*args)
+                on_selected_mode: app.set_selection_mode(*args)
+

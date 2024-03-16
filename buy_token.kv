@@ -1,0 +1,115 @@
+MDScreen:
+    name:"token"
+    FloatLayout:
+        Image:
+            source:"images/image11.png"
+            pos_hint:{"center_x":.5,"center_y":.5}
+            size_hint:(1, 1)
+            allow_stretch:True
+            keep_ratio:False
+        FloatLayout:
+            MDIconButton:
+                icon: "arrow-left"
+                icon_size:"30dp"
+                pos_hint: {"center_x": .075, "center_y": .93}
+                on_release:
+                    app.schedule_dashboard()
+                    app.root.transition.direction  = "right"
+                    app.root.current = "dashboard"
+                    app.unschedule_tracking()
+        FloatLayout:
+            MDLabel:
+                text:'Purchase Electricity Token'
+                pos_hint: {'center_x':.708, 'center_y':.93}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"18sp"
+        FloatLayout:
+            MDLabel:
+                text:'Units (KWh)'
+                pos_hint: {'center_x':.52, 'center_y':.753}
+                theme_text_color:'Custom'
+                text_color:(250/255,235/255,215/255, 255/255)
+                font_size:"20sp"
+        FloatLayout:
+            MDCard:
+                radius: 1, 1, 1, 1
+                focus_behavior: True
+                size_hint: .568, .050
+                pos_hint: {"center_x": .687, "center_y": .753}
+                md_bg_color: "#BDB76B"
+                unfocus_color: "#BDB76B"
+                focus_color: "#BDB76B"
+                elevation: 4
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDLabel:
+                id:energy
+                text:'Cash (KSh):'
+                pos_hint: {'center_x':.52, 'center_y':.603}
+                theme_text_color:'Custom'
+                text_color:(250/255,235/255,215/255, 255/255)
+                font_size:"20sp"
+        FloatLayout:
+            MDCard:
+                radius: 1, 1, 1, 1
+                focus_behavior: True
+                size_hint: .568, .050
+                pos_hint: {"center_x": .687, "center_y": .602}
+                md_bg_color: "#BDB76B"
+                unfocus_color: "#BDB76B"
+                focus_color: "#BDB76B"
+                elevation: 4
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDIconButton:
+                icon: "plus"
+                icon_size:"30dp"
+                theme_text_color: "Custom"
+                text_color: rgba(105,105,105,255)
+                pos_hint: {"center_x": .925, "center_y": .603}
+                on_release:
+                    app.incrementor()
+        FloatLayout:
+            MDIconButton:
+                icon: "minus"
+                icon_size:"40dp"
+                theme_text_color: "Custom"
+                text_color: rgba(105,105,105,255)
+                pos_hint: {"center_x": .445, "center_y": .603}
+                on_release:
+                    app.decrementor()
+        FloatLayout:
+            MDRaisedButton:
+                text: "            Submit             "
+                theme_text_color: "Custom"
+                text_color: (0/255, 0/255, 0/255, 1)
+                md_bg_color: (0/255, 255/255, 255/255, 1)
+                pos_hint:{'center_x':.5, 'center_y':.415}
+                on_release:
+                    app.buy_token()
+
+        FloatLayout:
+            MDLabel:
+                id:cash_label
+                text:'0'
+                pos_hint: {'center_x':1.145, 'center_y':.603}
+                theme_text_color:'Custom'
+                text_color:(220/255,20/255,60/255, 255/255)
+                font_size:"20sp"
+        FloatLayout:
+            MDLabel:
+                id:units_label
+                text:'13.5'
+                pos_hint: {'center_x': 1.125, 'center_y':.753}
+                theme_text_color:'Custom'
+                text_color:(220/255,20/255,60/255, 255/255)
+                font_size:"20sp"
+        FloatLayout:
+            MDSpinner:
+                size_hint: None, None
+                size: dp(46), dp(46)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                active: True if app.spinner else False

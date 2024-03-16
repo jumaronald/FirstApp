@@ -1,0 +1,199 @@
+<LoginGrid@MDGridLayout>
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            origin: self.center
+    canvas.after:
+        PopMatrix
+
+MDScreen:
+    name: "login"
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'LOGIN'
+            md_bg_color: "#e7e4c0"
+            specific_text_color: "#4a4939"
+            # right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
+            # left_action_items: [["arrow-left", lambda x: app.callback()]]
+            elevation: 3
+        BoxLayout:
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            MDFloatLayout:
+                LoginGrid:
+                    id:rotate
+                    rows:2
+                    cols:2
+                    angle:0
+                    spacing:3
+                    padding:3
+                    size_hint:(None,None)
+                    pos_hint: {"center_x": 0.075, "center_y": 0.93}
+                    height:35
+                    width:35
+                    MDFloatLayout:
+                        md_bg_color:rgba(242,80,34,255)
+                    MDFloatLayout:
+                        md_bg_color:rgba(127,126,0,255)
+                    MDFloatLayout:
+                        md_bg_color:rgba(0,164,239,255)
+                    MDFloatLayout:
+                        md_bg_color:rgba(255,185,0,255)
+                MDLabel:
+                    text:'Jemmy Powered'
+                    pos_hint:{'center_x':.65, 'center_y':.90}
+                    theme_text_color:'Custom'
+                    text_color:(205/255, 0/255, 0/255, 1)
+                    font_size:"13sp"
+                MDLabel:
+                    text:'R E M M'
+                    pos_hint:{'center_x':.65, 'center_y':.96}
+                    theme_text_color:'Custom'
+                    text_color:(25/255, 25/255, 112/255, 1)
+                    font_size:"16sp"
+                MDTextField:
+                    id:login_mail
+                    hint_text: "Username"
+                    hint_text_mode: "on_focus"
+                    required: True
+                    mode: "rectangle"
+                    line_color_normal: (100/255, 200/255, 337/255, 1)
+                    pos_hint:{'center_x': .5, 'center_y': .68}
+                    size_hint_x:None
+                    width:270
+                    size_hint_y:.20
+                    height:"40dp"
+                    icon_left: "account-outline"
+                MDTextField:
+                    id:login_password
+                    hint_text: "Password"
+                    theme_text_color: "Red"
+                    theme_text_color: "Primary"
+                    required: True
+                    mode: "rectangle"
+                    line_color_normal: (100/255, 149/255, 237/255, 1)
+                    pos_hint:{'center_x': .5, 'center_y': .38}
+                    size_hint_x:None
+                    width:270
+                    size_hint_y:.20
+                    height:"40dp"
+                    icon_left: "lock"
+                MDIconButton:
+                    icon: "eye-off"
+                    pos_hint: {"center_y": .361}
+                    pos: login_password.width - self.width + dp(25), 0
+                    theme_text_color: "Custom"
+                    text_color: rgba(0,127,255,255)
+                    on_release:
+                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                        login_password.password = False if login_password.password is True else True
+                MDLabel:
+                    text: "Forgot Password?"
+                    font_style:"Subtitle2"
+                    pos_hint:{'center_x':.78,'center_y':.040}
+                    theme_text_color: "Custom"
+                    text_color: (255/255,153/255,18/255,1)
+                MDFlatButton:
+                    text: "Reset Password"
+                    theme_text_color: "Custom"
+                    text_color: (0,127,255,255)
+                    pos_hint:{'center_x':.80,'center_y':.040}
+                    elevation:0
+                    on_release:
+                        app.password_reset()
+                MDRaisedButton:
+                    text: "   LOGIN    "
+                    md_bg_color: "green"
+                    pos_hint:{'center_x': .5, 'center_y': .15}
+                    elevation:2
+                    on_release:
+                        app.login()
+
+        FloatLayout:
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: (255/255, 228/255, 181/255,255/255)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDLabel:
+                text:"DON'T HAVE AN ACCOUNT?"
+                pos_hint:{'center_x':.63, 'center_y':.90}
+                theme_text_color:'Custom'
+                text_color:(25/255, 25/255, 112/255, 1)
+                font_size:"20sp"
+            MDRaisedButton:
+                text: "       SIGNUP         "
+                md_bg_color: (255/255, 48/255, 48/255, 1)
+                pos_hint:{'center_x':.5,'center_y':.72}
+                halign:"center"
+                elevation:0
+                on_release:
+                    print(f"This from login : {app.root.transition.direction}")
+                    app.root.transition.direction  = "left"
+                    app.root.current = "signup"
+            MDLabel:
+                text:'OR'
+                pos_hint:{'center_y':.58}
+                halign:"center"
+                theme_text_color:'Custom'
+                text_color:(255/255, 255/255, 255/255, 1)
+                font_size:"20sp"
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.center_x-140,self.center_y+22,self.center_x-15,self.center_y+22
+
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Line:
+                        points: self.center_x+15,self.center_y+22,self.center_x+140,self.center_y+22
+            FloatLayout:
+                MDRectangleFlatIconButton:
+                    icon: "twitter"
+                    text: "     Sign in With Twitter     "
+                    theme_text_color: "Custom"
+                    text_color: (25/255, 25/255, 112/255, 1)
+                    line_color: rgba(0,127,255,255)
+                    theme_icon_color: "Custom"
+                    icon_color: rgba(51,161,201,255)
+                    pos_hint:{'center_x':.5, 'center_y':.27}
+
+            FloatLayout:
+                MDRectangleFlatIconButton:
+                    icon: "google"
+                    text: "    Sign in With Google     "
+                    theme_text_color: "Custom"
+                    text_color: (25/255, 25/255, 112/255, 1)
+                    line_color: rgba(0,127,255,255)
+                    theme_icon_color: "Custom"
+                    icon_color: rgba(51,161,201,255)
+                    pos_hint:{'center_x':.5, 'center_y':.44}
+            FloatLayout:
+                MDRectangleFlatIconButton:
+                    icon: "facebook"
+                    text: "  Sign in With Facebook  "
+                    theme_text_color: "Custom"
+                    text_color: (25/255, 25/255, 112/255, 1)
+                    line_color: rgba(0,127,255,255)
+                    theme_icon_color: "Custom"
+                    icon_color: rgba(51,161,201,255)
+                    pos_hint:{'center_x':.5, 'center_y':.1}
+
+
+
+

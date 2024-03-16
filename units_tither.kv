@@ -1,0 +1,86 @@
+MDScreen:
+    name:"units_share"
+    FloatLayout:
+        Image:
+            source:"images/image23.jpg"
+            pos_hint:{"center_x":.5,"center_y":.5}
+            size_hint:(1, 1)
+            allow_stretch:True
+            keep_ratio:False
+        FloatLayout:
+            MDIconButton:
+                icon: "arrow-left"
+                icon_size:"30dp"
+                pos_hint: {"center_x": .075, "center_y": .96}
+                on_release:
+                    app.schedule_dashboard()
+                    app.root.transition.direction  = "right"
+                    app.root.current = "tither_token"
+                    app.unschedule_tracking()
+        FloatLayout:
+            MDLabel:
+                text:'SHARE YOUR TOKEN'
+                pos_hint: {'center_x':.708, 'center_y':.93}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"18sp"
+        FloatLayout:
+            MDCard:
+                radius: 1, 1, 1, 1
+                focus_behavior: True
+                size_hint: .82, .050
+                pos_hint: {"center_x": .52, "center_y": .602}
+                md_bg_color: "#BDB76B"
+                unfocus_color: "#BDB76B"
+                focus_color: "#BDB76B"
+                elevation: 4
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDIconButton:
+                icon: "plus"
+                icon_size:"30dp"
+                theme_text_color: "Custom"
+                text_color: rgba(105,105,105,255)
+                pos_hint: {"center_x": .853, "center_y": .603}
+                on_release:
+                    app.adder()
+        FloatLayout:
+            MDIconButton:
+                icon: "minus"
+                icon_size:"40dp"
+                theme_text_color: "Custom"
+                text_color: rgba(105,105,105,255)
+                pos_hint: {"center_x": .198, "center_y": .603}
+                on_release:
+                    app.subtractor()
+        FloatLayout:
+            MDLabel:
+                id:units_label
+                text:'Input Units Amount to Share'
+                pos_hint: {'center_x':.74, 'center_y':.603}
+                theme_text_color:'Custom'
+                text_color:(250/255,235/255,215/255, 255/255)
+                font_size:"15sp"
+        FloatLayout:
+            MDRectangleFlatButton:
+                text: "       Cancel         "
+                theme_text_color: "Custom"
+                text_color: (255/255, 255/255, 0/255, 1)
+                line_color: rgba(255,255,0,255)
+                pos_hint:{'center_x':.25, 'center_y':.435}
+                on_release:
+                    app.tither_mode = 4
+                    app.root.transition.direction  = "right"
+                    app.root.current = "tither_token"
+            MDRectangleFlatButton:
+                text: "       OK      "
+                theme_text_color: "Custom"
+                text_color: (255/255, 255/255, 0/255, 1)
+                line_color: rgba(255,255,0,255)
+                pos_hint:{'center_x':.75, 'center_y':.435}
+                on_release:
+                    app.tither_mode = 3
+                    app.root.transition.direction  = "right"
+                    app.root.current = "tither_token"
+

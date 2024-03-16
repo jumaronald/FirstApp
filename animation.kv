@@ -1,0 +1,69 @@
+<SlidingPopup@Screen>:
+    GridLayout:
+        row:2
+        cols:1
+        canvas:
+            Color:
+                rgba:(122/255,197/255,205/255,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        Label:
+            text:"Are You Sure?"
+            font_size:24
+    GridLayout:
+        rows:1
+        padding:10
+        spacing:100
+        MDRectangleFlatButton:
+            text: "Continue"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "red"
+            on_release:
+                # print(f"This is: {app.root.transition.direction}")
+                app.root.transition.direction  = "right"
+                app.root.current = "login"
+        MDRectangleFlatButton:
+            text: "Exit"
+            theme_text_color: "Custom"
+            text_color: "white"
+            line_color: "blue"
+            on_press:
+                app.exit_function()
+<BlinkingButton@Button>:
+    text:"    "
+    animated_color:(1,1,1,1)
+    blink_size:0
+    canvas.before:
+        Color:
+            rgba:self.animated_color
+        Rectangle:
+            size:self.blink_size, self.blink_size*1.5
+            pos:self.pos[0] + self.size[0]/2. - self.blink_size/2., self.pos[1] + self.size[1]/2. - self.blink_size/2.
+MDScreen:
+    name:"animation"
+    FloatLayout:
+        BlinkingButton:
+            id:button_blink
+            size_hint:.2,.2
+            pos_hint:{"center_x":.5, "center_y":.5}
+
+        SlidingPopup:
+            id:sliding_pop
+            size_hint:.9, 0.25
+            top_hint:0
+            pos_hint:{"top":self.top_hint, "right":.95}
+
+        Label:
+            text:"              Remote Energy Multimeter : R E M M"
+            pos_hint:{"center_x":.3, "center_y":.98}
+            size_hint:(2, .04)
+            canvas.before:
+                Color:
+                    rgba: 220/255, 20/255, 60/255, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+

@@ -1,0 +1,195 @@
+<Check@MDCheckbox>:
+    group: 'group'
+    size_hint: None, None
+    size: dp(48), dp(48)
+MDScreen:
+    name:"power"
+    FloatLayout:
+        Image:
+            source:"images/image26.jpg"
+            pos_hint:{"center_x":.5,"center_y":.5}
+            size_hint:(1, 1)
+            allow_stretch:True
+            keep_ratio:False
+        FloatLayout:
+            MDIconButton:
+                icon: "arrow-left"
+                icon_size:"30dp"
+                pos_hint: {"center_x": .075, "center_y": .96}
+                on_release:
+                    app.get_power_settings()
+                    app.schedule_dashboard()
+                    app.root.transition.direction  = "right"
+                    app.root.current = "dashboard"
+                    app.unschedule_tracking()
+        FloatLayout:
+            MDCard:
+                radius: 4, 4, 4, 4
+                focus_behavior: True
+                size_hint: .968, .280
+                pos_hint: {"center_x": .5, "center_y": .76}
+                md_bg_color: "#6495ED"
+                unfocus_color: "#6495ED"
+                focus_color: "#6495ED"
+                elevation: 1
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDLabel:
+                text:'POWER MANAGEMENT'
+                pos_hint: {'center_x':.708, 'center_y':.96}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"18sp"
+        FloatLayout:
+            Check:
+                on_active: app.unlimited_checkbox(*args)
+                active: True if app.infinite_state else False
+                pos_hint: {'center_x': .88, 'center_y': .865}
+            Check:
+                on_active: app.limited_checkbox(*args)
+                active: True if app.limited_state else False
+                id: checkbox
+                pos_hint: {'center_x': .88, 'center_y': .785}
+        FloatLayout:
+            MDLabel:
+                text:'Unlimited Power Consumption Mode'
+                pos_hint: {'center_x':.58, 'center_y':.865}
+                theme_text_color:'Custom'
+                text_color:(1, 1, 1, 1)
+                font_size:"14sp"
+        FloatLayout:
+            MDLabel:
+                text:'Restricted Power Consumption Mode'
+                pos_hint: {'center_x':.58, 'center_y':.785}
+                theme_text_color:'Custom'
+                text_color:(1, 1, 1, 1)
+                font_size:"14sp"
+        FloatLayout:
+            MDTextField:
+                id: power_value
+                disabled: not checkbox.active
+                hint_text: "Enter Power in Watts"
+                helper_text: "Your Power is Turned OFF When This Power Is Exceeded"
+                helper_text_mode: "on_focus"
+                helper_text_mode: "on_error"
+                on_focus: if self.focus: app.meter_menu.open()
+                pos_hint: {'center_x':.58, 'center_y':.695}
+                font_size:"14sp"
+        FloatLayout:
+            MDCard:
+                radius: 4, 4, 4, 4
+                focus_behavior: True
+                size_hint: .968, .098
+                pos_hint: {"center_x": .5, "center_y": .545}
+                md_bg_color: "#212121"
+                unfocus_color: "#212121"
+                focus_color: "#212121"
+                elevation: 1
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDIconButton:
+                id: power_button
+                icon: "power"
+                # style: "tonal"
+                # theme_bg_color: "Custom"
+                # md_bg_color: "#838B8B"
+                theme_icon_color: "Custom"
+                # radius: [self.height / 2, ]
+                # size_hint: None, None
+                # size: "84dp", "84dp"
+                icon_size:"50dp"
+                icon_color: "red" if app.power_state else "#7FFF00"
+                pos_hint: {'center_x': .88, 'center_y': .545}
+                on_release:
+                    app.power_button()
+        FloatLayout:
+            MDLabel:
+                id: switch_label
+                text:'Turn OFF Your Household Power'
+                pos_hint: {'center_x':.58, 'center_y':.545}
+                theme_text_color:'Custom'
+                text_color:(1, 1, 1, 1)
+                font_size:"14sp"
+        FloatLayout:
+            MDCard:
+                radius: 4, 4, 4, 4
+                focus_behavior: True
+                size_hint: .968, .098
+                pos_hint: {"center_x": .5, "center_y": .418}
+                md_bg_color: "#008B8B"
+                unfocus_color: "#008B8B"
+                focus_color: "#008B8B"
+                elevation: 1
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDRectangleFlatIconButton:
+                icon: "infinity"
+                text: "       Unlimited Sharing Status         "
+                theme_text_color: "Custom"
+                text_color: (255/255, 255/255, 255/255, 1)
+                line_color: rgba(255,185,15,255)
+                theme_icon_color: "Custom"
+                icon_color: rgba(255,185,15,255)
+                pos_hint:{'center_x':.5, 'center_y':.418}
+                on_release:
+                    app.sharing_button = 1
+                    app.root.transition.direction  = "left"
+                    app.root.current ="sharing"
+                    app.unlimited_button()
+        FloatLayout:
+            MDCard:
+                radius: 4, 4, 4, 4
+                focus_behavior: True
+                size_hint: .968, .098
+                pos_hint: {"center_x": .5, "center_y": .291}
+                md_bg_color: "#473C8B"
+                unfocus_color: "#473C8B"
+                focus_color: "#473C8B"
+                elevation: 1
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDRectangleFlatIconButton:
+                icon: "clock-time-eight-outline"
+                text: "          Time Sharing Status            "
+                theme_text_color: "Custom"
+                text_color: (255/255, 255/255, 255/255, 1)
+                line_color: rgba(255,185,15,255)
+                theme_icon_color: "Custom"
+                icon_color: rgba(255,185,15,255)
+                pos_hint:{'center_x':.5, 'center_y':.291}
+                on_release:
+                    app.sharing_button = 0
+                    app.root.transition.direction  = "left"
+                    app.root.current ="sharing"
+                    app.unlimited_button()
+        FloatLayout:
+            MDCard:
+                radius: 4, 4, 4, 4
+                focus_behavior: True
+                size_hint: .968, .098
+                pos_hint: {"center_x": .5, "center_y": .164}
+                md_bg_color: "#008B45"
+                unfocus_color: "#008B45"
+                focus_color: "#008B45"
+                elevation: 1
+                shadow_softness: 8
+                shadow_offset: (-2, 2)
+        FloatLayout:
+            MDRectangleFlatIconButton:
+                icon: "view-grid-plus"
+                text: "             View Your Meters               "
+                theme_text_color: "Custom"
+                text_color: (255/255, 255/255, 255/255, 1)
+                line_color: rgba(255,185,15,255)
+                theme_icon_color: "Custom"
+                icon_color: rgba(255,185,15,255)
+                pos_hint:{'center_x':.5, 'center_y':.164}
+                on_release:
+                    app.sharing_button = 2
+                    app.root.transition.direction  = "left"
+                    app.root.current ="sharing"
+                    app.unlimited_button()

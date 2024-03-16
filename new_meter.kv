@@ -1,0 +1,107 @@
+MDScreen:
+    name: "meter_number"
+    BoxLayout:
+        orientation: 'vertical'
+        MDFloatLayout:
+            Image:
+                source:"images/image22.jpg"
+                pos_hint:{"center_x":.5,"center_y":.5}
+                size_hint_x:1
+                size_hint_x:1
+                allow_stretch:True
+                keep_ratio:False
+            MDIconButton:
+                icon: "arrow-left"
+                icon_size:"30dp"
+                pos_hint: {"center_x": .075, "center_y": .9}
+                on_release:
+                    app.schedule_dashboard()
+                    app.root.transition.direction  = "right"
+                    app.root.current = "dashboard"
+            MDLabel:
+                text:'  Change Meter Number  '
+                pos_hint: {'center_x':.708, 'center_y':.9}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"18sp"
+            MDTextField:
+                id: dest_meter
+                max_text_length: 10
+                hint_text: "Destination Meter Number"
+                mode: "rectangle"
+                size_hint_x:None
+                pos_hint: {"center_x": .5, "center_y": .71}
+                size_hint_y:None
+                width:270
+                height:"20dp"
+                # icon_left: "phone"
+            MDTextField:
+                id: pre_meter
+                max_text_length: 10
+                hint_text: "Current Meter Number"
+                mode: "rectangle"
+                size_hint_x:None
+                pos_hint: {"center_x": .5, "center_y": .435}
+                size_hint_y:None
+                height:"20dp"
+                width:270
+                # icon_left: "email"
+            MDRectangleFlatIconButton:
+                icon: "swap-horizontal"
+                text: "             Migrate to Other Meter             "
+                theme_text_color: "Custom"
+                text_color: (0/255, 127/255, 255/255, 1)
+                line_color: rgba(0,127,255,255)
+                theme_icon_color: "Custom"
+                icon_color: rgba(0,127,255,255)
+                pos_hint:{'center_x':.5, 'center_y':.095}
+                on_release:
+                    app.change_meter()
+            MDCheckbox:
+                on_active: app.on_checkbox_active(*args)
+                size_hint: None, None
+                size: "48dp", "48dp"
+                pos_hint: {'center_x': .13, 'center_y': .24}
+            MDLabel:
+                text:'  Free Your Current Meter  '
+                pos_hint: {'center_x':.675, 'center_y':.24}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"12sp"
+
+        MDFloatLayout:
+            Image:
+                source:"images/image21.jpg"
+                pos_hint:{"center_x":.5,"center_y":.5}
+                size_hint_x:1
+                size_hint_x:1
+                allow_stretch:True
+                keep_ratio:False
+            MDLabel:
+                text:"  Don't Have a Meter Number?  "
+                pos_hint: {'center_x':.62, 'center_y':.9}
+                theme_text_color:'Custom'
+                text_color:(227/255, 207/255, 87/255, 255/255)
+                font_size:"18sp"
+            MDTextField:
+                id: new_meter
+                max_text_length: 10
+                hint_text: "Enter New Meter Number"
+                mode: "rectangle"
+                size_hint_x:None
+                pos_hint: {"center_x": .5, "center_y": .51}
+                size_hint_y:None
+                width:270
+                height:"20dp"
+            MDRectangleFlatIconButton:
+                icon: "new-box"
+                text: "          Acquire New Meter Number         "
+                theme_text_color: "Custom"
+                text_color: (0/255, 127/255, 255/255, 1)
+                line_color: rgba(0,127,255,255)
+                theme_icon_color: "Custom"
+                icon_color: rgba(0,127,255,255)
+                pos_hint:{'center_x':.5, 'center_y':.12}
+                on_release:
+                    app.get_new_meter()
+

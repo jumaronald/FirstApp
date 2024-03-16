@@ -1,0 +1,105 @@
+
+MDScreen:
+    name:"signup"
+    BoxLayout:
+        orientation: 'vertical'
+        FloatLayout:
+            Image:
+                source:"images/image1.png"
+                pos_hint:{"center_x":.5,"center_y":.5}
+                size_hint:(1, 1)
+                allow_stretch:True
+                keep_ratio:False
+            FloatLayout:
+                MDIconButton:
+                    icon: "arrow-left"
+                    icon_size:"30dp"
+                    pos_hint: {"center_x": .075, "center_y": .96}
+                    on_release:
+                        print(f"This from signup is: {app.root.transition.direction}")
+                        app.root.transition.direction  = "right"
+                        app.root.current = "login"
+                MDIconButton:
+                    icon: "dots-vertical"
+                    icon_size:"30dp"
+                    pos_hint: {"center_x": .935, "center_y": .96}
+                    on_release:
+                        print(f"This from signup is:")
+                MDIconButton:
+                    icon: "account-circle"
+                    pos_hint: {"center_x": .5, "center_y": .85}
+                    icon_size:"120dp"
+                MDTextField:
+                    id: phone
+                    hint_text: "Phone Number"
+                    mode: "rectangle"
+                    size_hint_x:None
+                    pos_hint: {"center_x": .5, "center_y": .63}
+                    size_hint_y:None
+                    width:270
+                    height:"20dp"
+                    icon_left: "phone"
+                MDTextField:
+                    id: email
+                    hint_text: "Email"
+                    mode: "rectangle"
+                    size_hint_x:None
+                    pos_hint: {"center_x": .5, "center_y": .488}
+                    size_hint_y:None
+                    height:"20dp"
+                    width:270
+                    icon_left: "email"
+                MDTextField:
+                    id: password
+                    hint_text: "Password"
+                    multiline: False
+                    mode: "rectangle"
+                    size_hint_x:None
+                    pos_hint: {"center_x": .5, "center_y": .350}
+                    size_hint_y:None
+                    height:"20dp"
+                    width:270
+                    icon_left: "lock-outline"
+                MDTextField:
+                    id: confirm_password
+                    hint_text: "Confirm Password"
+                    multiline: False
+                    mode: "rectangle"
+                    size_hint_x:None
+                    pos_hint: {"center_x": .5, "center_y": .210}
+                    size_hint_y:None
+                    height:"20dp"
+                    width:270
+                    icon_left: "lock-outline"
+                MDLabel:
+                    text: "CREATE AN ACCOUNT"
+                    font_style:"H6"
+                    halign:"center"
+                    pos_hint: {"center_y": .73}
+                    theme_text_color: "Custom"
+                    text_color: (255/255,153/255,18/255,1)
+
+                MDRaisedButton:
+                    text: "       SIGNUP         "
+                    md_bg_color: (255/255, 48/255, 48/255, 1)
+                    halign:"center"
+                    pos_hint:{'center_x':.5,'center_y':.1}
+                    elevation:0
+                    on_release:
+                        app.signup()
+                MDLabel:
+                    text: "Already have an account?"
+                    font_style:"Subtitle2"
+                    pos_hint:{'center_x':.55,'center_y':.025}
+                    theme_text_color: "Custom"
+                    text_color: (255/255,153/255,18/255,1)
+                MDFlatButton:
+                    text: "login"
+                    pos_hint:{'center_x':.63,'center_y':.025}
+                    elevation:0
+                    on_release:
+                        # print(f"This is: {app.root.transition.direction}")
+                        app.root.transition.direction  = "right"
+                        app.root.current = "login"
+
+
